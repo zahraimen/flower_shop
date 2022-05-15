@@ -2,9 +2,9 @@
 {% load crispy_forms_tags %}
 {% block page_title %} Login{% endblock %}
 {% block content %}
-    <form action="" method="post">
+    <form class="mt-3" action="" method="post">
         {% csrf_token %}
         {{ form|crispy }}
-        <button type="submit">login</button>
+        <button class="mt-3" type="submit">login</button>
     </form>
 {% endblock %}
