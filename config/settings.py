@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # third party
-    'crispy_forms'
+    'crispy_forms',
 
     # local
     'accounts',
@@ -130,4 +130,4 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 # crispy forms setting
-CRISPY_TEMPLATE_PATH = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
