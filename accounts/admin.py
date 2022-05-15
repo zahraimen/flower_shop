@@ -12,6 +12,7 @@ class CustomUserAdmin(UserAdmin):
     model = CustomUser
     list_display = ['username', 'city', 'is_staff']
     fieldsets = UserAdmin.fieldsets + (
+
         (None, {'fields': ('city',)}),
     )
     add_fieldsets = UserAdmin.add_fieldsets + (
