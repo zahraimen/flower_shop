@@ -7,4 +7,5 @@
         {{ form|crispy }}
         <button class="mt-3" type="submit">login</button>
     </form>
+    <p><a href="{% url 'password_reset' %}">forgot password</a> | <a href="{% url 'signup' %}">Signup</a> </p>
 {% endblock %}
