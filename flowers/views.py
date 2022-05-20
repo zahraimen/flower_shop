@@ -9,4 +9,7 @@ class FlowerListView(generic.ListView):
     template_name = 'flowers/flower_list.html'
     context_object_name = 'flowers'
 
-# class FlowerDetailView(generic.DetailView):
+
+class FlowerDetailView(generic.DetailView):
+    model = Flower
+    template_name = 'flowers/flower_detail.html'
