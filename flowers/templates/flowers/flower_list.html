@@ -3,7 +3,7 @@
 {% block page_title %}لیست گلها{% endblock %}
 {% block content %}
     {% for flower in flowers %}
-        <h1>{{ flower.title }}</h1>
+       <a href="{{ flower.get_absolute_url }}"><h1>{{ flower.title }}</h1></a>
         <p>{{ flower.description }}</p>
 
 
