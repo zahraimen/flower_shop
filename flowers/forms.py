@@ -6,3 +6,6 @@ class FlowerCreation(forms.ModelForm):
     class Meta:
         model = Flower
         fields = ('title', 'seller', 'description', 'price',)
+
+
+

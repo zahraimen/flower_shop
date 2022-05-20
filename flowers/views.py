@@ -19,3 +19,9 @@ class FlowerDetailView(generic.DetailView):
 class FlowerCreateView(generic.CreateView):
     form_class = FlowerCreation
     template_name = 'flowers/flower_create.html'
+
+
+class FlowerUpdateView(generic.UpdateView):
+    model = Flower
+    fields = ['title', 'seller', 'price']
+    template_name = 'flowers/flower_update.html'
