@@ -8,3 +8,5 @@ class FlowerListView(generic.ListView):
     model = Flower
     template_name = 'flowers/flower_list.html'
     context_object_name = 'flowers'
+
+# class FlowerDetailView(generic.DetailView):
