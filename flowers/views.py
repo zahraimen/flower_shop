@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
+from django.urls import reverse_lazy
 # Create your views here.
 from .models import Flower
 from .forms import FlowerCreation
@@ -25,3 +26,9 @@ class FlowerUpdateView(generic.UpdateView):
     model = Flower
     fields = ['title', 'seller', 'price']
     template_name = 'flowers/flower_update.html'
+
+
+class FlowerDeleteView(generic.DeleteView):
+    model = Flower
+    template_name = 'flowers/flower_delete.html'
+    success_url = reverse_lazy('flower_list')

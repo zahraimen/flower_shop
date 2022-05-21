@@ -1,0 +1,15 @@
+{% extends '_base.html' %}
+
+{% block page_title %}افزودن گل {{ flower.title }}{% endblock %}
+{% block content %}
+    <form action="" method="post">
+    {% csrf_token %}
+        <h1>حذف گل {{ flower.title }}</h1>
+        <p>آیا از حذف گل {{ flower.title }}مطمعنی؟</p>
+        <input type="submit" value="بله ">
+    </form>
+
+<a href="{% url 'flower_list' %}">لیست گلها</a>
+
+
+{% endblock %}
