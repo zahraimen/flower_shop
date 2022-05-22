@@ -1,8 +1,9 @@
 {% extends '_base.html' %}
+{% load flower_tags %}
 
 {% block page_title %}جزییات گل {{ flower.title }}{% endblock %}
 {% block content %}
-    <h1>{{ flower.title }}</h1>
+    <h1>{{ flower.title|is_english }}</h1>
     <p>{{ flower.description }}</p>
     <p>{{ flower.seller }}</p>
     <p>{{ flower.price }}</p>

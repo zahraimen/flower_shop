@@ -6,8 +6,8 @@ register = template.Library()
 
 @register.filter
 def is_english(value):
-    reg = re.compile(r'[a-zA-Z]')
+    reg = re.compile(r'[a-z]')
     if reg.match(value):
-        return value.
+        return value.title()
     else:
-        print("It is not an alphabet")
+        return value
