@@ -1,129 +1,201 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en-US" dir="ltr">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--
+    Document Title
+    =============================================
+    -->
+    {% block page_title %}{% endblock %}
 
-  <title>{% block title %}{% endblock %}</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <!--
+    Favicons
+    =============================================
+    -->
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'assets/images/favicons/apple-icon-57x57.png' %}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'assets/images/favicons/apple-icon-60x60.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'assets/images/favicons/apple-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/images/favicons/apple-icon-76x76.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'assets/images/favicons/apple-icon-114x114.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'assets/images/favicons/apple-icon-120x120.png' %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'assets/images/favicons/apple-icon-144x144.png' %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'assets/images/favicons/apple-icon-152x152.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/images/favicons/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192"
+          href="{% static 'assets/images/favicons/android-icon-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'assets/images/favicons/favicon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicons/favicon-16x16.png' %}">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{% static 'assets/images/favicons/ms-icon-144x144.png' %}">
+    <meta name="theme-color" content="#ffffff">
+    <!--
+    Stylesheets
+    =============================================
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Groovin - v4.7.1
-  * Template URL: https://bootstrapmade.com/groovin-free-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    -->
+    <!-- Default stylesheets-->
+    <link href="{% static 'assets/lib/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Template specific stylesheets-->
+{#    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">#}
+{#    <link href="https://fonts.googleapis.com/css?family=Volkhov:400i" rel="stylesheet">#}
+{#    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">#}
+    <link href="{% static 'assets/lib/animate.css/animate.css' %}" rel="stylesheet">
+{#    <link href="{% static 'assets/lib/components-font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">#}
+{#    <link href="{% static 'assets/lib/et-line-font/et-line-font.css' %}" rel="stylesheet">#}
+    <link href="{% static 'assets/lib/flexslider/flexslider.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/owl.carousel/dist/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/owl.carousel/dist/assets/owl.theme.default.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/magnific-popup/dist/magnific-popup.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/simple-text-rotator/simpletextrotator.css' %}" rel="stylesheet">
+    <!-- Main stylesheet and color file-->
+{#    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">#}
+    <link href="{% static 'assets/css/style-rtl.css' %}" rel="stylesheet">
+    <link id="color-scheme" href="{% static 'assets/css/colors/default.css' %}" rel="stylesheet">
 </head>
+<body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+<main>
+    <div class="page-loader" dir="rtl">
+        <div class="loader">Loading...</div>
+    </div>
+    <nav class="navbar navbar-custom navbar-fixed-top navbar-transparent" style="background-color:
+#282527" role="navigation">
+        <div class="container" dir="rtl">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse"><span
+                        class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
+                        class="icon-bar"></span><span class="icon-bar"></span></button>
 
-<body>
+                {% if user.is_authenticated %}
+                   <div class="font-alt mb-30 titan-title-size-1" style="    padding-top: 15px;" >خوش آمدی {{ user.username }} | <a href="{% url 'logout' %}">خروج</a></div>
+                 {% else %}
 
- {% block content %}{% endblock %}
- <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
+                    <div class="font-alt mb-30 titan-title-size-1" style="    padding-top: 15px;" ><a href="{% url 'signup' %}">ثبت نام</a> | <a  href="{% url 'login' %}">ورود</a></div>
 
-          <div class="col-lg-3 col-md-6">
-            <div class="footer-info">
-              <h3>Groovin</h3>
-              <p>
-                A108 Adam Street <br>
-                NY 535022, USA<br><br>
-                <strong>Phone:</strong> +1 5589 55488 55<br>
-                <strong>Email:</strong> info@example.com<br>
-              </p>
-              <div class="social-links mt-3">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-              </div>
+                {% endif %}
             </div>
-          </div>
+            <div class="collapse navbar-collapse" id="custom-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li ><a href="{% url 'flower_create' %}">افزودن گیاه شما</a>
+                    </li>
+                    <li ><a href="documentation.html">درباره ما</a>
+                    </li>
+                    <li ><a href="{% url 'flower_list' %}">محصولات</a>
+                    </li>
+                    <li ><a href="{% url 'home' %}">خانه</a>
+                    </li>
+                    <a class="navbar-brand" href="index.html">Titan</a>
+                </ul>
 
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-
-          </div>
-
+            </div>
         </div>
-      </div>
+    </nav>
+    {% block content %}{% endblock %}
+    <div class="module-small bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">About Titan</h5>
+                        <p>The languages only differ in their grammar, their pronunciation and their most common
+                            words.</p>
+                        <p>Phone: +1 234 567 89 10</p>Fax: +1 234 567 89 10
+                        <p>Email:<a href="#">somecompany@example.com</a></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">Recent Comments</h5>
+                        <ul class="icon-list">
+                            <li>Maria on <a href="#">Designer Desk Essentials</a></li>
+                            <li>John on <a href="#">Realistic Business Card Mockup</a></li>
+                            <li>Andy on <a href="#">Eco bag Mockup</a></li>
+                            <li>Jack on <a href="#">Bottle Mockup</a></li>
+                            <li>Mark on <a href="#">Our trip to the Alps</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">Blog Categories</h5>
+                        <ul class="icon-list">
+                            <li><a href="#">Photography - 7</a></li>
+                            <li><a href="#">Web Design - 3</a></li>
+                            <li><a href="#">Illustration - 12</a></li>
+                            <li><a href="#">Marketing - 1</a></li>
+                            <li><a href="#">Wordpress - 16</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">Popular Posts</h5>
+                        <ul class="widget-posts">
+                            <li class="clearfix">
+                                <div class="widget-posts-image"><a href="#"><img
+                                        src="{% static 'assets/images/rp-1.jpg' %}"
+                                        alt="Post Thumbnail"/></a></div>
+                                <div class="widget-posts-body">
+                                    <div class="widget-posts-title"><a href="#">Designer Desk Essentials</a></div>
+                                    <div class="widget-posts-meta">23 january</div>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="widget-posts-image"><a href="#"><img
+                                        src="{% static 'assets/images/rp-2.jpg' %}"
+                                        alt="Post Thumbnail"/></a></div>
+                                <div class="widget-posts-body">
+                                    <div class="widget-posts-title"><a href="#">Realistic Business Card Mockup</a></div>
+                                    <div class="widget-posts-meta">15 February</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="container">
-      <div class="copyright">
-
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/groovin-free-bootstrap-theme/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
+    <hr class="divider-d">
+    <footer class="footer bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <p class="copyright font-alt">&copy; 2017&nbsp;<a href="index.html">TitaN</a>, All Rights Reserved
+                    </p>
+                </div>
+                <div class="col-sm-6">
+                    <div class="footer-social-links"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i
+                            class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i
+                            class="fa fa-skype"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     </div>
-  </footer><!-- End Footer -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-
+    <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
+</main>
+<!--
+JavaScripts
+=============================================
+-->
+<script src="{% static 'assets/lib/jquery/dist/jquery.js' %}"></script>
+<script src="{% static 'assets/lib/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/lib/wow/dist/wow.js' %}"></script>
+<script src="{% static 'assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js' %}"></script>
+<script src="{% static 'assets/lib/isotope/dist/isotope.pkgd.js' %}"></script>
+<script src="{% static 'assets/lib/imagesloaded/imagesloaded.pkgd.js' %}"></script>
+<script src="{% static 'assets/lib/flexslider/jquery.flexslider.js' %}"></script>
+<script src="{% static 'assets/lib/owl.carousel/dist/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/lib/smoothscroll.js' %}"></script>
+<script src="{% static 'assets/lib/magnific-popup/dist/jquery.magnific-popup.js' %}"></script>
+<script src="{% static 'assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
 </body>
-
 </html>

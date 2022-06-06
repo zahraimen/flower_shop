@@ -1,9 +1,31 @@
 {% extends '_base.html' %}
+
 {% block page_title %}Home Page{% endblock %}
 {% block content %}
-    {% if user.is_authenticated %}
-        <p>welcome {{ user.username }} | <a href="{% url 'logout' %}">logout</a></p>
-    {% else %}
-        <p><a href="{% url 'login' %}">login</a> | <a href="{% url 'signup' %}">signup</a> </p>
-    {% endif %}
+
+     <!-- ======= slide Section ======= -->
+<section class="home-section home-fade home-full-height" id="home">
+        <div class="hero-slider">
+          <ul class="slides">
+            <li class="bg-dark-30 bg-dark shop-page-header" style="background-image:url(/static/assets/images/shop/slider1.jpg);">
+              <div class="titan-caption">
+                <div class="caption-content">
+                  <div class="font-alt mb-30 titan-title-size-1">This is Titan</div>
+                  <div class="font-alt mb-30 titan-title-size-4"> Summer 2017</div>
+                  <div class="font-alt mb-40 titan-title-size-1">گلها موسیقی خاک هستند از لبهای زمین که بدون صدا صحبت میکنند</div><a class="section-scroll btn btn-border-w btn-round" href="{% url 'flower_list' %}">لیست محصولات</a>
+                </div>
+              </div>
+            </li>
+            <li class="bg-dark-30 bg-dark shop-page-header" style="background-image:url(/static/assets/images/shop/slider2.jpg);">
+              <div class="titan-caption">
+                <div class="caption-content">
+                  <div class="font-alt mb-30 titan-title-size-1"> This is Titan</div>
+                  <div class="font-alt mb-40 titan-title-size-1">تمام گلهایی که فردا میرویند در بذرهای امروز هستند</div><a class="section-scroll btn btn-border-w btn-round" href="{% url 'flower_list' %}">لیست محصولات</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
 {% endblock %}
