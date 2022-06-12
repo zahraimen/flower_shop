@@ -24,7 +24,7 @@ class FlowerCreateView(generic.CreateView):
 
 class FlowerUpdateView(generic.UpdateView):
     model = Flower
-    fields = ['title', 'seller', 'price']
+    fields = ['title', 'seller', 'description', 'price', 'cover', ]
     template_name = 'flowers/flower_update.html'
 
 

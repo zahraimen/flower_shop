@@ -1,15 +1,30 @@
 {% extends '_base.html' %}
 
 {% block page_title %}افزودن گل {{ flower.title }}{% endblock %}
+{% load crispy_forms_tags %}
 {% block content %}
-    <form action="" method="post">
-    {% csrf_token %}
-        <h1>حذف گل {{ flower.title }}</h1>
-        <p>آیا از حذف گل {{ flower.title }}مطمعنی؟</p>
-        <input type="submit" value="بله ">
-    </form>
+    <section class="module">
+          <div class="container" dir="rtl">
+            <div class="row">
+              <div class="col-sm-5 col-sm-offset-1 mb-sm-40" style="margin-left: 25%;box-shadow: 0px 11px 20px 3px #8ea99554;border-radius: 5px;">
+                <h4 class="font-alt">حذف گل</h4>
+                <hr class="divider-w mb-10">
+                <form class="form" action="" method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                  <div class="form-group">
+                      <h3>آیا از حذف گل {{ flower.title }} مطمئن هستید ؟ </h3>
+                    <button class="btn btn-round btn-b" type="submit">بله</button>
+                      <button class="btn btn-round btn-b btn-danger" type="submit">انصراف</button>
+                  </div>
+                  <div class="form-group" style="font-size: medium;"><p><a href="{% url 'password_reset' %}"> فراموشی رمز عبور </a>  |  <a href="{% url 'signup' %}" style="color: #0475d7;">  ثبت نام  </a></p></div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
 
-<a href="{% url 'flower_list' %}">لیست گلها</a>
+
 
 
 {% endblock %}

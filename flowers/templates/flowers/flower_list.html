@@ -15,13 +15,19 @@
                     <a href="{{ flower.get_absolute_url }}">
                         <div class="col-sm-6 col-md-3 col-lg-3">
                             <div class="shop-item">
-                                <div class="shop-item-image"><img src="{% static 'assets/images/shop/product-7.jpg' %}"
-                                                                  alt="Accessories Pack"/>
-                                    <div class="shop-item-detail"><a href="{{ flower.get_absolute_url }}" class="btn btn-round btn-b"><span
-                                            class="icon-basket">{{ flower.title}}</span></a>
+                                <div class="shop-item-image">
+                                    {% if flower.cover %}
+                                        <img src="{{ flower.cover.url }}" alt="Accessories Pack"/>
+                                    {% else %}
+                                        <img src="{% static 'assets/images/shop/No_Cover.jpg' %}"
+                                             alt="Accessories Pack"/>
+                                    {% endif %}
+                                    <div class="shop-item-detail"><a href="{{ flower.get_absolute_url }}"
+                                                                     class="btn btn-round btn-b"><span
+                                            class="icon-basket">{{ flower.title }}</span></a>
                                     </div>
                                 </div>
-                                <h4 class="shop-item-title font-alt"><a href="#">{{ flower.description}}</a></h4>
+                                <h4 class="shop-item-title font-alt"><a href="#">{{ flower.description }}</a></h4>
                                 <p>{{ flower.price }}</p>
                             </div>
                         </div>

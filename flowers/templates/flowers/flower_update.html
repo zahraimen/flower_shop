@@ -1,16 +1,26 @@
 {% extends '_base.html' %}
-{% load flower_tags %}
-
-
-{% block page_title %}ویرایش گل {{ flower.title|is_english }}{% endblock %}
+{% load crispy_forms_tags %}
+{% block page_title %} افزودن گل جدید{% endblock %}
 {% block content %}
-    <form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">ذخیره {{ flower.title|is_english }}</button>
-    </form>
+    <section class="module">
+        <div class="container" dir="rtl">
+            <div class="row">
+                <div class="col-sm-5 col-sm-offset-1 mb-sm-40"
+                     style="margin-left: 25%;box-shadow: 0px 11px 20px 3px #8ea99554;border-radius: 5px;">
+                    <h4 class="font-alt">گیاه جدید</h4>
+                    <hr class="divider-w mb-10">
+                    <form class="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                       <div class="form-group">
 
-<a href="{% url 'flower_list' %}">لیست گلها</a>
+                            <button class="btn btn-round btn-b" type="submit">افزودن</button>
+                        </div>
 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}
