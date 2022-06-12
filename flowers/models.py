@@ -1,5 +1,6 @@
 from django.db import models
 from django.shortcuts import reverse
+from django.contrib.auth import get_user_model
 
 
 # Create your models here.
@@ -16,4 +17,12 @@ class Flower(models.Model):
     def get_absolute_url(self):
         return reverse('flower_detail', args=[self.id])
 
-# class PersonLogin(models.Model):
+
+class Comment(models.Model):
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    flower = models.ForeignKey(Flower, on_delete=models.CASCADE)
+    text = models.TextField()
+    datetime_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user} : {self.text}'
