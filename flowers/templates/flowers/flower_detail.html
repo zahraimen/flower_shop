@@ -89,9 +89,16 @@
                     <h2 class="mb-5">نظرات:</h2>
                     <div style="border-bottom: inset;">
                         {% for comment in  comments %}
-                            <h4 class="mb-3">{{ comment.user.username }} : </h4>
-                            <p style="font-size: medium;line-height: 3rem;;">{{ comment.text|linebreaks }}</p>
+                            {% if comment.is_active %}
+                                <h4 class="mb-3">{{ comment.user.username }} : </h4>
+                                {% if comment.recommend %}
+                                    <p>خرید این گل را توصیه میکنم</p>
+                                {% else %}
+                                    <p>خرید این گل را توصیه نمیکنم</p>
+                                {% endif %}
+                                <p style="font-size: medium;line-height: 3rem;;">{{ comment.text|linebreaks }}</p>
 
+                            {% endif %}
                         {% endfor %}
 
                     </div>
@@ -103,6 +110,7 @@
                 <div class="card shadow my-3 p-5 w-sm-75 w-100" style="padding: 3rem">
                     <h3>نظر خود را وارد کنید:</h3>
                     <form method="POST">
+                        {% csrf_token %}
                         <div class="form-group py-2">
                             <label class="py-1" for="author_name">نام شما:</label>
                             <input type="text" class="form-control" placeholder="علی علوی" name="author_name">

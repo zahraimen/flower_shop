@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
 # Create your views here.
 from .models import Flower
-from .forms import FlowerCreation
+from .forms import FlowerCreation, CommentForm
 
 
 class FlowerListView(generic.ListView):
@@ -19,8 +19,20 @@ def book_detail_view(request, pk):
     flower = get_object_or_404(Flower, pk=pk)
     # get flower comments
     flower_comments = flower.comments.all()
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.flower = flower
+            new_comment.user = request.user
+            new_comment.save()
+            comment_form = CommentForm()
 
-    return render(request, 'flowers/flower_detail.html', {'flower': flower  , 'comments':flower_comments})
+    else:
+        comment_form = CommentForm()
+
+    return render(request, 'flowers/flower_detail.html',
+                  {'flower': flower, 'comments': flower_comments, 'comment_form': comment_form})
 
 
 # class FlowerDetailView(generic.DetailView):
