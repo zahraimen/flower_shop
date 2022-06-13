@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404
 # Create your views here.
 from .models import Flower
 from .forms import FlowerCreation
@@ -13,9 +14,18 @@ class FlowerListView(generic.ListView):
     paginate_by = 4
 
 
-class FlowerDetailView(generic.DetailView):
-    model = Flower
-    template_name = 'flowers/flower_detail.html'
+def book_detail_view(request, pk):
+    # get flower object
+    flower = get_object_or_404(Flower, pk=pk)
+    # get flower comments
+    flower_comments = flower.comments.all()
+
+    return render(request, 'flowers/flower_detail.html', {'flower': flower  , 'comments':flower_comments})
+
+
+# class FlowerDetailView(generic.DetailView):
+#     model = Flower
+#     template_name = 'flowers/flower_detail.html'
 
 
 class FlowerCreateView(generic.CreateView):

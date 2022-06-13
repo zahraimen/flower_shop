@@ -20,9 +20,9 @@ class Flower(models.Model):
 
 class Comment(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    flower = models.ForeignKey(Flower, on_delete=models.CASCADE)
+    flower = models.ForeignKey(Flower, on_delete=models.CASCADE, related_name='comments')
     text = models.TextField()
     datetime_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.user} : {self.text}'
+        return self.text
