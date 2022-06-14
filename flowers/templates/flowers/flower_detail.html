@@ -1,4 +1,5 @@
 {% extends '_base.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
 {% load flower_tags %}
 
@@ -106,30 +107,51 @@
                 </div>
             </div>
 
-            <div class="mt-20 " dir="rtl" style="box-shadow: 1px 1px 20px 1px #8888886b;">
-                <div class="card shadow my-3 p-5 w-sm-75 w-100" style="padding: 3rem">
-                    <h3>نظر خود را وارد کنید:</h3>
-                    <form method="POST">
-                        {% csrf_token %}
-                        <div class="form-group py-2">
-                            <label class="py-1" for="author_name">نام شما:</label>
-                            <input type="text" class="form-control" placeholder="علی علوی" name="author_name">
-                        </div>
-                        <div class="form-group py-2">
-                            <label class="py-1" for="email">ایمیل شما:</label>
-                            <input type="email" class="form-control" placeholder="example@gmail.com" name="email">
-                        </div>
-                        <div class="form-group py-2">
-                            <label class="py-1" for="comment_text">متن نظر:</label>
-                            <textarea class="form-control" name="text" rows="3"
-                                      placeholder="نظر خود را اینجا وارد کنید."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-success">ارسال</button>
+            <div class="mt-20 " dir="rtl" style="box-shadow: 1px 1px 20px 1px #8888886b;padding: 3rem">
+                <div class="comment-form mt-30" dir="rtl">
+                    <h4 class="comment-form-title font-alt">نظر خود را وارد کنید :</h4>
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div id="div_id_recommend" class="form-check">
+                                        <label for="id_recommend" class="form-check-label">
+                                            توصیه میکنم
+                                        </label>
+                                        <input type="checkbox" name="recommend" class="checkboxinput form-check-input" style="margin: 4px 30px 0;"
+                                               id="id_recommend" checked="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="sr-only" for="email">Name</label>
+                                    <input class="form-control" id="email" type="text" name="email"
+                                           placeholder="ایمیل"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="sr-only" for="name">نام</label>
+                                    <input class="form-control" id="name" type="text" name="name" placeholder="نام"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <textarea class="form-control" id="" name="" rows="4"
+                                              placeholder="متن نظر"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <button class="btn btn-round btn-success" type="submit">ارسال نظر</button>
+                            </div>
+
+
                     </form>
                 </div>
             </div>
         </div>
-        </div>
+
     </section>
 
 

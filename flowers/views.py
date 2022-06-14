@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views import generic
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 from .models import Flower
 from .forms import FlowerCreation, CommentForm
@@ -14,6 +16,7 @@ class FlowerListView(generic.ListView):
     paginate_by = 4
 
 
+@login_required
 def book_detail_view(request, pk):
     # get flower object
     flower = get_object_or_404(Flower, pk=pk)
@@ -32,7 +35,7 @@ def book_detail_view(request, pk):
         comment_form = CommentForm()
 
     return render(request, 'flowers/flower_detail.html',
-                  {'flower': flower, 'comments': flower_comments, 'comment_form': comment_form})
+                  {'flower': flower, 'comments': flower_comments, 'comment_form': comment_form, })
 
 
 # class FlowerDetailView(generic.DetailView):
@@ -40,18 +43,18 @@ def book_detail_view(request, pk):
 #     template_name = 'flowers/flower_detail.html'
 
 
-class FlowerCreateView(generic.CreateView):
+class FlowerCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = FlowerCreation
     template_name = 'flowers/flower_create.html'
 
 
-class FlowerUpdateView(generic.UpdateView):
+class FlowerUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Flower
     fields = ['title', 'seller', 'description', 'price', 'cover', ]
     template_name = 'flowers/flower_update.html'
 
 
-class FlowerDeleteView(generic.DeleteView):
+class FlowerDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Flower
     template_name = 'flowers/flower_delete.html'
     success_url = reverse_lazy('flower_list')
