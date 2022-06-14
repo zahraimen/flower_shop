@@ -30,7 +30,7 @@
                         <div class="col-sm-8">
                             <div class="description">
                                 <p>{{ flower.description }}</p>
-                                 <p>ایجاد کننده : {{ flower.user.username }}</p>
+                                 <p>ایجاد کننده : {{ flower.seller }}</p>
                             </div>
                         </div>
                     </div>
@@ -71,20 +71,21 @@
                                 class="fa fa-star star"></i></span><span><i class="fa fa-star star-off"></i></span>
                         </div>
                     </div>
-                    <div class="row mb-20">
-                        <div class="col-sm-8"><a class="btn btn-lg btn-block btn-round btn-b"
-                                                 href="{% url 'flower_update' flower.id %}">ویرایش</a></div>
-                        <div class="col-sm-8 " style="margin-top: 15px"><a class="btn btn-lg btn-block btn-round btn-b"
-                                                                           href="{% url 'flower_delete' flower.id %}">حذف</a>
+                    {% if flower.seller == user.username  %}
+                        <div class="row mb-20">
+                            <div class="col-sm-8"><a class="btn btn-lg btn-block btn-round btn-b"
+                                                     href="{% url 'flower_update' flower.id %}">ویرایش</a></div>
+                            <div class="col-sm-8 " style="margin-top: 15px"><a class="btn btn-lg btn-block btn-round btn-b"
+                                                                               href="{% url 'flower_delete' flower.id %}">حذف</a>
+                            </div>
                         </div>
-                    </div>
-
+                    {% endif %}
 
                 </div>
 
 
             </div>
-            <div class="col-sm-12 d-flex justify-content-center card shadow my-3 p-5 w-sm-75 w-100" dir="rtl">
+            <div class="col-sm-12 d-flex justify-content-center card shadow my-3 p-5 w-sm-75 w-100 mt-30" dir="rtl">
                 <div class="d-flex justify-content-center" style="box-shadow: 1px 1px 20px 1px #8888886b;" dir="rtl">
                     <div class="card shadow my-3 p-5 w-sm-75 w-100" style="padding: 3rem"
                     ">
@@ -112,40 +113,42 @@
                 <div class="comment-form mt-30" dir="rtl">
                     <h4 class="comment-form-title font-alt">نظر خود را وارد کنید :</h4>
                     <form method="post">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <div id="div_id_recommend" class="form-check">
-                                        <label for="id_recommend" class="form-check-label">
-                                            توصیه میکنم
-                                        </label>
-                                        <input type="checkbox" name="recommend" class="checkboxinput form-check-input" style="margin: 4px 30px 0;"
-                                               id="id_recommend" checked="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label class="sr-only" for="email">Name</label>
-                                    <input class="form-control" id="email" type="text" name="email"
-                                           placeholder="ایمیل"/>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label class="sr-only" for="name">نام</label>
-                                    <input class="form-control" id="name" type="text" name="name" placeholder="نام"/>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <textarea class="form-control" id="" name="" rows="4"
-                                              placeholder="متن نظر"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+{#                        <div class="row">#}
+{#                            <div class="col-sm-4">#}
+{#                                <div class="form-group">#}
+{#                                    <div id="div_id_recommend" class="form-check">#}
+{#                                        <label for="id_recommend" class="form-check-label">#}
+{#                                            توصیه میکنم#}
+{#                                        </label>#}
+{#                                        <input type="checkbox" name="recommend" class="checkboxinput form-check-input" style="margin: 4px 30px 0;"#}
+{#                                               id="id_recommend" checked="">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-sm-4">#}
+{#                                <div class="form-group">#}
+{#                                    <label class="sr-only" for="email">Name</label>#}
+{#                                    <input class="form-control" id="email" type="text" name="email"#}
+{#                                           placeholder="ایمیل"/>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-sm-4">#}
+{#                                <div class="form-group">#}
+{#                                    <label class="sr-only" for="name">نام</label>#}
+{#                                    <input class="form-control" id="name" type="text" name="name" placeholder="نام"/>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-sm-12">#}
+{#                                <div class="form-group">#}
+{#                                    <textarea class="form-control" id="" name="" rows="4"#}
+{#                                              placeholder="متن نظر"></textarea>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-sm-12">#}
                                 <button class="btn btn-round btn-success" type="submit">ارسال نظر</button>
-                            </div>
+{#                            </div>#}
 
 
                     </form>

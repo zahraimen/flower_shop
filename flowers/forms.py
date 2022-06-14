@@ -8,7 +8,13 @@ class FlowerCreation(forms.ModelForm):
         fields = ('title', 'seller', 'description', 'price', 'cover')
 
 
-class CommentForm(forms.ModelForm):
+class UserCommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('text', 'recommend',)
+
+
+class AnonymousCommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('fullname', 'email', 'text', 'recommend',)

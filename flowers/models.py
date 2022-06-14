@@ -5,7 +5,6 @@ from django.contrib.auth import get_user_model
 
 # Create your models here.
 class Flower(models.Model):
-    user = models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
     title = models.CharField(max_length=225)
     seller = models.CharField(max_length=225)
     description = models.TextField()
@@ -22,6 +21,8 @@ class Flower(models.Model):
 class Comment(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     flower = models.ForeignKey(Flower, on_delete=models.CASCADE, related_name='comments')
+    fullname = models.CharField(max_length=128, null=True)
+    email = models.EmailField(null=True)
     text = models.TextField()
     datetime_created = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
@@ -29,3 +30,12 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+
+    def get_author_name(self):
+        try:
+            return self.user.username
+        except AttributeError:
+            return self.fullname
+
+    def get_absolute_url(self):
+        return reverse('flower_detail', args=[self.flower.id]) + f'#{self.id}'
