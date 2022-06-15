@@ -27,7 +27,7 @@
                                             class="icon-basket">{{ flower.title }}</span></a>
                                     </div>
                                 </div>
-                                <h4 class="shop-item-title font-alt"><a href="#">{{ flower.description }}</a></h4>
+                                <h4 class="shop-item-title font-alt"><a href="{{ flower.get_absolute_url }}">{{ flower.description }}</a></h4>
                                 <p>{{ flower.price }}</p>
                             </div>
                         </div>

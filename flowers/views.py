@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404,redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -32,7 +32,7 @@ class FlowerDetailView(generic.DetailView):
         context['form'] = self.get_form_class()()
         return context
 
-    def post(self, **kwargs):
+    def post(self, *args, **kwargs):
         request = self.request
         form = self.get_form_class()(request.POST)
         if form.is_valid():
@@ -51,15 +51,27 @@ class FlowerCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = FlowerCreation
     template_name = 'flowers/flower_create.html'
 
+    def form_valid(self, form):
+        flower = form.save(commit=False)
+        flower.seller = self.request.user
+        flower.save()
+        return redirect(flower.get_absolute_url())
+
 
 class FlowerUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
     model = Flower
-    fields = ['title', 'seller', 'description', 'price', 'cover', ]
+    fields = ['title', 'description', 'price', 'cover', ]
     template_name = 'flowers/flower_update.html'
 
     def test_func(self):
         obj = self.get_object()
-        return obj.seller == self.request.user.username
+        return obj.seller == self.request.user
+
+    # def form_valid(self, form):
+    #     flower = form.save(commit=False)
+    #     flower.seller = self.request.user
+    #     flower.save()
+    #     return redirect(flower.get_absolute_url())
 
 
 class FlowerDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
@@ -69,4 +81,4 @@ class FlowerDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteVi
 
     def test_func(self):
         obj = self.get_object()
-        return obj.seller == self.request.user.username
+        return obj.seller.username == self.request.user.username

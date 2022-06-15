@@ -3,7 +3,7 @@
 {% block page_title %}افزودن گل {{ flower.title }}{% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <section class="module">
+    <section class="module" xmlns="http://www.w3.org/1999/html">
           <div class="container" dir="rtl">
             <div class="row">
               <div class="col-sm-5 col-sm-offset-1 mb-sm-40" style="margin-left: 25%;box-shadow: 0px 11px 20px 3px #8ea99554;border-radius: 5px;">
@@ -15,9 +15,9 @@
                   <div class="form-group">
                       <h3>آیا از حذف گل {{ flower.title }} مطمئن هستید ؟ </h3>
                     <button class="btn btn-round btn-b" type="submit">بله</button>
-                      <button class="btn btn-round btn-b btn-danger" type="submit">انصراف</button>
+                      <a href=" {{ flower.get_absolute_url }} "><input type="button" class="btn btn-round btn-b" value="انصراف"></a>
                   </div>
-                  <div class="form-group" style="font-size: medium;"><p><a href="{% url 'password_reset' %}"> فراموشی رمز عبور </a>  |  <a href="{% url 'signup' %}" style="color: #0475d7;">  ثبت نام  </a></p></div>
+
                 </form>
               </div>
             </div>

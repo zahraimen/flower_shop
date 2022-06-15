@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 # Create your models here.
 class Flower(models.Model):
     title = models.CharField(max_length=225)
-    seller = models.CharField(max_length=225)
+    seller = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True)
     description = models.TextField()
     price = models.IntegerField()
     cover = models.ImageField(upload_to='covers/', blank=True)
@@ -19,7 +19,7 @@ class Flower(models.Model):
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True)
     flower = models.ForeignKey(Flower, on_delete=models.CASCADE, related_name='comments')
     fullname = models.CharField(max_length=128, null=True)
     email = models.EmailField(null=True)

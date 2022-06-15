@@ -72,7 +72,7 @@
                         class="icon-bar"></span><span class="icon-bar"></span></button>
 
                 {% if user.is_authenticated %}
-                   <div class="font-alt mb-30 titan-title-size-1" style="    padding-top: 15px;" >خوش آمدی {{ user.username }} | <a href="{% url 'logout' %}">خروج</a></div>
+                   <div class="font-alt mb-30 titan-title-size-1" style="    padding-top: 15px;" >خوش آمدی {{ user.username }} | <a href="{% url 'logout' %}">خروج</a> </div>
                  {% else %}
 
                     <div class="font-alt mb-30 titan-title-size-1" style="    padding-top: 15px;" ><a href="{% url 'signup' %}">ثبت نام</a> | <a  href="{% url 'login' %}">ورود</a></div>
@@ -82,8 +82,6 @@
             <div class="collapse navbar-collapse" id="custom-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li ><a href="{% url 'flower_create' %}">افزودن گیاه شما</a>
-                    </li>
-                    <li ><a href="documentation.html">درباره ما</a>
                     </li>
                     <li ><a href="{% url 'flower_list' %}">محصولات</a>
                     </li>
@@ -99,32 +97,7 @@
     <div class="module-small bg-dark" dir="rtl">
         <div class="container"  style="line-height: 2rem;">
             <div class="row">
-                <div class="col-sm-3">
-                    <div class="widget">
-                        <h5 class="widget-title font-alt">محبوب ترینها</h5>
-                        <ul class="widget-posts">
-                            <li class="clearfix">
-                                <div class="widget-posts-image"><a href="#"><img
-                                        src="{% static 'assets/images/rp-1.jpg' %}"
-                                        alt="Post Thumbnail"/></a></div>
-                                <div class="widget-posts-body">
-                                    <div class="widget-posts-title"><a href="#">Designer Desk Essentials</a></div>
-                                    <div class="widget-posts-meta">23 january</div>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <div class="widget-posts-image"><a href="#"><img
-                                        src="{% static 'assets/images/rp-2.jpg' %}"
-                                        alt="Post Thumbnail"/></a></div>
-                                <div class="widget-posts-body">
-                                    <div class="widget-posts-title"><a href="#">Realistic Business Card Mockup</a></div>
-                                    <div class="widget-posts-meta">15 February</div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="widget">
                         <h5 class="widget-title font-alt">بلاگ</h5>
                         <ul class="icon-list">
@@ -136,7 +109,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="widget">
                         <h5 class="widget-title font-alt">شبکه های اجتماعی</h5>
                         <ul class="icon-list">
@@ -147,7 +120,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-3" >
+                <div class="col-sm-4" >
                     <div class="widget" >
                         <h5 class="widget-title font-alt">درباره تیتان</h5>
                         <p>سفارش آنلاین انواع گل و گیاه با بهترین قیمت و ارسال فوری </p>
@@ -167,7 +140,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <p class="copyright font-alt">&copy; 2017&nbsp;<a href="index.html">TitaN</a>, All Rights Reserved
+
                     </p>
                 </div>
                 <div class="col-sm-6">

@@ -5,7 +5,7 @@ from .models import Flower, Comment
 class FlowerCreation(forms.ModelForm):
     class Meta:
         model = Flower
-        fields = ('title', 'seller', 'description', 'price', 'cover')
+        fields = ('title', 'description', 'price', 'cover')
 
 
 class UserCommentForm(forms.ModelForm):
