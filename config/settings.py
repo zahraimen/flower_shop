@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 
     # third party
     'crispy_forms',
+    'whitenoise',
 
     # local
     'accounts',
@@ -138,6 +139,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 
+
 # media config
 MEDIA_URL = '/media/'
 MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
